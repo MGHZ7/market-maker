@@ -1,4 +1,4 @@
-import { Task } from "@/domain/core/task/task";
+import { Task } from "@/domain/core/store/store";
 import { Model } from "@/domain/shared/model/model";
 import { ICRUDData } from "./../../shared/service/dataTransfer";
 import { QueryClient, UseMutationResult, UseQueryResult } from "react-query";

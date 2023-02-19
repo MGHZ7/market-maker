@@ -1,43 +1,41 @@
-import { IReactQueryService } from "./../generic/reactQueryService";
-import { Task } from "@/domain/core/task/task";
-import { TaskService } from "@/domain/core/task/taskService";
+import { IReactQueryService } from "../generic/reactQueryService";
+import { Store } from "@/domain/core/store/store";
+import { TaskService } from "@/domain/core/store/storeService";
 import { Data } from "@/domain/shared/data/data";
 import { createContext } from "react";
 import { QueryClient, useMutation, useQuery } from "react-query";
 
-import React from "react";
-
-export interface ITaskAppService extends IReactQueryService<Task, string> {
+export interface IStoreAppService extends IReactQueryService<Store, string> {
   readonly listKey: string;
   readonly addKey: string;
 }
 
-export class TaskAppService implements ITaskAppService {
+export class TaskAppService implements IStoreAppService {
   private taskService = new TaskService();
-  listKey: string = "tasks";
-  addKey: string = "addTask";
+  listKey: string = "stores";
+  addKey: string = "addStore";
 
   state = {};
 
   useQuery = () => useQuery(this.listKey, () => this.taskService.getAll());
 
-  async getAll(): Promise<Data<Task[], string>> {
+  async getAll(): Promise<Data<Store[], string>> {
     const data = await this.taskService.getAll();
 
     return data;
   }
-  async get(id: string): Promise<Data<Task, string>> {
+  async get(id: string): Promise<Data<Store, string>> {
     throw new Error("Method not implemented.");
   }
-  async add(model: Task): Promise<Data<Task, string>> {
+  async add(model: Store): Promise<Data<Store, string>> {
     const data = await this.taskService.add(model);
 
     return data;
   }
-  async update(model: Task): Promise<Data<Task, string>> {
+  async update(model: Store): Promise<Data<Store, string>> {
     return await this.taskService.update(model);
   }
-  async delete(model: Task): Promise<void> {
+  async delete(model: Store): Promise<void> {
     await this.taskService.delete(model);
   }
 
@@ -46,27 +44,27 @@ export class TaskAppService implements ITaskAppService {
     useQuery([this.listKey, id], () => this.get(id));
   useAddQuery = (queryClient: QueryClient) =>
     useMutation({
-      mutationFn: (model: Task) => this.add(model),
+      mutationFn: (model: Store) => this.add(model),
       onSuccess: () => {
         queryClient.invalidateQueries({ queryKey: [this.listKey] });
       },
     });
   useDeleteQuery = (queryClient: QueryClient) =>
     useMutation({
-      mutationFn: (model: Task) => this.delete(model),
+      mutationFn: (model: Store) => this.delete(model),
       onSuccess: () => {
         queryClient.invalidateQueries({ queryKey: [this.listKey] });
       },
     });
   useUpdateQuery = (queryClient: QueryClient) =>
     useMutation({
-      mutationFn: (model: Task) => this.update(model),
+      mutationFn: (model: Store) => this.update(model),
       onSuccess: () => {
         queryClient.invalidateQueries({ queryKey: [this.listKey] });
       },
     });
 }
 
-export const TaskAppServiceContext = createContext<ITaskAppService>(
+export const TaskAppServiceContext = createContext<IStoreAppService>(
   new TaskAppService()
 );

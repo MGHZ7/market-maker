@@ -1,4 +1,4 @@
-import { Model } from "./../../shared/model/model";
+import { Model } from "../../shared/model/model";
 
 export interface StoreProps {
   id: string;
@@ -7,11 +7,11 @@ export interface StoreProps {
 }
 
 export class Store extends Model<string> {
-  static createRepo(title: string): Store {
+  static createStore(title: string): Store {
     return new Store("", title);
   }
 
-  static createTaskFromJson(json: StoreProps): Store {
+  static createStoreFromJson(json: StoreProps): Store {
     return new Store(json.id, json.title);
   }
 

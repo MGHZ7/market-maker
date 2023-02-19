@@ -6,12 +6,12 @@ import { TaskListItemProps } from "./taskListItem/taskListItemType";
 import { MouseEvent, useContext, useEffect, useState } from "react";
 import { ComponentBasicState } from "@/components/generic/componentBasicState";
 import { ListSkeleton } from "@/components/ui/list";
-import { TaskAppService, TaskAppServiceContext } from "@/domain/application/task/taskService";
+import { TaskAppService, TaskAppServiceContext } from "@/domain/application/store/store";
 import { CardActionsLayoutProps, CrudCard } from "@/components/ui/card/crudCard/crudCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { useMutation, useQuery, useQueryClient } from "react-query";
-import { Task } from "@/domain/core/task/task";
+import { Task } from "@/domain/core/store/store";
 
 export interface TaskListProps {
     tasks?: TaskListItemProps[];
