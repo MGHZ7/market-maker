@@ -1,17 +1,18 @@
 import { Model } from "./../../shared/model/model";
 
-export interface TaskProps {
+export interface StoreProps {
   id: string;
   title: string;
+  owner: string;
 }
 
-export class Task extends Model<string> {
-  static createTask(title: string): Task {
-    return new Task("", title);
+export class Store extends Model<string> {
+  static createRepo(title: string): Store {
+    return new Store("", title);
   }
 
-  static createTaskFromJson(json: TaskProps): Task {
-    return new Task(json.id, json.title);
+  static createTaskFromJson(json: StoreProps): Store {
+    return new Store(json.id, json.title);
   }
 
   private _title: string;
@@ -35,7 +36,7 @@ export class Task extends Model<string> {
     return this._createdAt.toString();
   }
 
-  public toJson(): TaskProps {
+  public toJson(): StoreProps {
     const parentJson = super.toJson();
 
     return { ...parentJson, title: this.title, createdAt: this.createdAt };

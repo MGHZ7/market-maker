@@ -1,11 +1,12 @@
 import { Model } from "@/domain/shared/model/model";
 import { Data } from "../data/data";
+import { FilterAndPaginateType } from "../model/filterAndPagination";
 
 /**
  * Fetch data from source
  */
 export interface IFetch<T extends Model<ID>, ID = string> {
-  getAll(): Promise<Data<T[], ID>>;
+  getAll(searchAndPagination?: FilterAndPaginateType): Promise<Data<T[], ID>>;
   get(id: ID): Promise<Data<T, ID>>;
 }
 

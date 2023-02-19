@@ -1,3 +1,4 @@
+import { FilterAndPaginateType } from "./../../../shared/model/filterAndPagination";
 import { Data } from "@/domain/shared/data/data";
 import { Model } from "@/domain/shared/model/model";
 import { ICRUDData } from "@/domain/shared/service/dataTransfer";
@@ -8,24 +9,13 @@ export interface IRepository<T extends Model<ID>, ID>
 export abstract class Repository<T extends Model<ID>, ID>
   implements IRepository<T, ID>
 {
-  abstract getAll(): Promise<Data<T[], ID>>;
+  abstract getAll(
+    filterAndPaginate: FilterAndPaginateType
+  ): Promise<Data<T[], ID>>;
   abstract get(id: ID): Promise<Data<T, ID>>;
   abstract add(model: T): Promise<Data<T, ID>>;
   abstract update(model: T): Promise<Data<T, ID>>;
   abstract delete(model: T): Promise<void>;
-}
-
-export abstract class ApiRepository<T extends Model<ID>, ID> extends Repository<
-  T,
-  ID
-> {
-  private _basePath: string;
-  // TODO add api service property
-
-  constructor(basePath: string) {
-    super();
-    this._basePath = basePath;
-  }
 }
 
 export abstract class StorageRepository<
