@@ -14,7 +14,14 @@ export abstract class ApiRepository<T extends Model<ID>, ID> extends Repository<
 
   constructor(basePath: string, idKey: string) {
     super();
+    /**
+     * base api path
+     */
     this._basePath = basePath;
+    /**
+     * The key of the query parameter the specify the wanted model ID
+     * @example "id", "TaskId"
+     */
     this._idKey = idKey;
   }
 
