@@ -8,7 +8,7 @@ export interface ItemCardListProps extends UiElementProps {
 export const ItemCardList = (props: ItemCardListProps) => {
 
     return (
-        <section className={`columns-2xs`}>
+        <section className={`grid grid-flow-row grid-cols-3 gap-2`}>
             {props.cards?.map((card, index) => (<ItemCard key={index} {...card} />))}
         </section>
     );
