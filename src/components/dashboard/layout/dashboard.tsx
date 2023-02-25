@@ -1,4 +1,4 @@
-import { AdminMainLayout } from "@/components/ui/admin/dashboard/layout";
+import { AdminMainLayout } from "@/components/ui/dashboard/layout";
 import { UiElementProps } from "@/components/ui/shared";
 import { DRAWER_SECTIONS } from "./dashboardData";
 import { ReactElement } from "react";
