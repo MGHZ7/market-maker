@@ -4,6 +4,7 @@ import { Product } from "@/domain/core/category/product/product";
 import { useMemo } from "react";
 import { ProductCard } from "../card/card";
 import { ItemCardList } from "@/components/ui/card/itemList";
+import { FilterBarWithAdd } from "@/components/ui/filterAndSearch/layout/withAdd/filterBarWithAdd";
 
 export interface ProductListProps {
     products: Product[];
@@ -11,17 +12,14 @@ export interface ProductListProps {
 
 export const ProductList = ({ products }: ProductListProps) => {
 
-    const cards = useMemo<ItemCardProps[]>(() => products.map((product) =>
-    ({
-        description: product.description ?? '',
-        image: { ...product.image, src: product.image.src ?? '' },
-        title: product.title
-    })),
-        [products]);
-
     return (
-        <ItemCardList
-            cards={cards}
-        />
+        <>
+            <FilterBarWithAdd className={`mb-4`}>
+                <h4>Filter</h4>
+            </FilterBarWithAdd>
+            <ItemCardList>
+                {products.map((product) => (<ProductCard key={product.id} {...product} id={product.id} toJson={product.toJson} />))}
+            </ItemCardList>
+        </>
     );
 }

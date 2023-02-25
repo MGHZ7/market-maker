@@ -25,7 +25,7 @@ export const getStaticProps: GetStaticProps = (context: any) => {
                         src: "https://images.pexels.com/photos/15094168/pexels-photo-15094168.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                     },
                     title: "Title",
-                    description: "Description",
+                    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent blandit ornare sem a molestie. Cras ut purus quis odio luctus euismod eget at dui.",
                 },
                 {
                     id: "2",
@@ -33,7 +33,7 @@ export const getStaticProps: GetStaticProps = (context: any) => {
                         src: "https://images.pexels.com/photos/15094168/pexels-photo-15094168.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                     },
                     title: "Title",
-                    description: "Description",
+                    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent blandit ornare sem a molestie. Cras ut purus quis odio luctus euismod eget at dui.",
                 },
                 {
                     id: "3",
@@ -41,7 +41,7 @@ export const getStaticProps: GetStaticProps = (context: any) => {
                         src: "https://images.pexels.com/photos/15094168/pexels-photo-15094168.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                     },
                     title: "Title",
-                    description: "Description",
+                    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent blandit ornare sem a molestie. Cras ut purus quis odio luctus euismod eget at dui.",
                 },
                 {
                     id: "4",

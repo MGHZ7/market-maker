@@ -22,7 +22,7 @@ export const Drawer = ({ header, sections, className, isOpen }: DrawerProps) => 
     };
 
     return (<aside className={`bg-white shadow ${className ?? ''} h-screen transition-all px-4 py-4 
-        overflow-clip shrink-0 ${state.isOpen ? 'w-80' : 'w-10 flex flex-col items-end'}`}>
+        overflow-clip shrink-0 sticky top-0 self-start ${state.isOpen ? 'w-80' : 'w-10 flex flex-col items-end'}`}>
         <DrawerHeder isOpen={state.isOpen} onToggleCloseOpen={handleToggleDrawer} {...header} />
         <div className={`transition-all transition-200  ${state.isOpen ? 'opacity-100' : 'opacity-0'}`}>
             {sections?.map((section, index) => <DrawerSection key={index} {...section} />)}

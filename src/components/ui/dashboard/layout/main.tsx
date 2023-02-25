@@ -9,9 +9,9 @@ export interface AdminMainLayoutProps extends UiElementProps {
 export const AdminMainLayout = ({ drawer, children }: AdminMainLayoutProps) => {
 
     return (
-        <div className={`flex`}>
+        <div className={`flex items-stretch`}>
             <Drawer {...drawer} className={`${drawer?.className ?? ''}`} />
-            <main className={`p-10 flex-1 shrink bg-background`}>
+            <main className={`p-10 flex-1 shrink bg-background @container`}>
                 {children}
             </main>
         </div>
