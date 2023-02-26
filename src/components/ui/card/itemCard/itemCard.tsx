@@ -2,8 +2,6 @@ import { Button } from "../../button";
 import { ImageProps } from "../../image";
 import { MediaCard } from "../mediaCard/mediaCard";
 
-import TextTruncate from 'react-text-truncate'; // recommend
-
 export interface ItemCardProps {
     image: ImageProps;
     title: string;
@@ -11,19 +9,19 @@ export interface ItemCardProps {
 };
 
 const NUMBER_OF_DESCRIPTION_LINES = 2;
+const MAX_CHARACTERS_COUNT = 70;
 
 export const ItemCard = ({ image, title, description }: ItemCardProps) => {
 
     const Body = () => (<div className={``}>
         <h4 className={`text-lg truncate`}>{title}</h4>
-        <TextTruncate
-            line={NUMBER_OF_DESCRIPTION_LINES}
-            element="div"
-            truncateText="…"
-            text={description}
-            containerClassName={`text-sm text-ellipsis overflow-hidden h-10`}
-        />
-    </div>);
+        <p className={`text-sm text-ellipsis overflow-hidden`}
+            dangerouslySetInnerHTML={{
+                __html:
+                    `${description.substring(0, MAX_CHARACTERS_COUNT)}
+                     ${description.length > MAX_CHARACTERS_COUNT ? '...' : ""}`
+            }}></p>
+    </div >);
 
     const Footer = () => <div className={`flex justify-center`}>
         <Button>
