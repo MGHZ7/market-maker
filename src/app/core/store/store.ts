@@ -29,13 +29,13 @@ export class Store extends Model<string> {
   private _dateCreated: Date;
 
   private constructor(
-    id?: string,
+    id: string = "",
     name: string,
     logo: string,
     description: string,
     dateCreated?: number
   ) {
-    super(id ?? "");
+    super(id);
     this._dateCreated = dateCreated ? new Date(dateCreated) : new Date();
     this._name = name.trim();
     // TODO change image static url
