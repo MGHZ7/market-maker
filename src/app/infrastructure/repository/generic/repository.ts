@@ -1,7 +1,7 @@
-import { FilterAndPaginateType } from "./../../../shared/model/filterAndPagination";
-import { Data } from "@/domain/shared/data/data";
-import { Model } from "@/domain/shared/model/model";
-import { ICRUDData } from "@/domain/shared/service/dataTransfer";
+import { FilterAndPaginateType } from "../../../shared/model/filterAndPagination";
+import { Data } from "@/app/shared/data/data";
+import { Model } from "@/app/shared/model/model";
+import { ICRUDData } from "@/app/shared/service/dataTransfer";
 
 export interface IRepository<T extends Model<ID>, ID>
   extends ICRUDData<T, ID> {}

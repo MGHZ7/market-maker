@@ -1,5 +1,5 @@
 import { Products } from "@/components/dashboard/products";
-import { Product } from "@/domain/core/category/product/product";
+import { Product } from "@/app/core/category/product/product";
 import { GetStaticProps } from "next";
 
 export interface ServerDashboardProductsProps {

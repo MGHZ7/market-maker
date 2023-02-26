@@ -1,4 +1,4 @@
-import { Model } from "@/domain/shared/model/model";
+import { Model } from "@/app/shared/model/model";
 import { Data } from "../data/data";
 import { FilterAndPaginateType } from "../model/filterAndPagination";
 

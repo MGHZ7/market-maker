@@ -1,5 +1,5 @@
 import { ItemCard } from "@/components/ui/card/itemCard/itemCard";
-import { Product } from "@/domain/core/category/product/product";
+import { Product } from "@/app/core/category/product/product";
 
 export const ProductCard = (product: Product) => {
 

@@ -1,7 +1,7 @@
 import { IReactQueryService } from "../generic/reactQueryService";
-import { Store } from "@/domain/core/store/store";
-import { TaskService } from "@/domain/core/store/storeService";
-import { Data } from "@/domain/shared/data/data";
+import { Store } from "@/app/core/store/store";
+import { TaskService } from "@/app/core/store/storeService";
+import { Data } from "@/app/shared/data/data";
 import { createContext } from "react";
 import { QueryClient, useMutation, useQuery } from "react-query";
 

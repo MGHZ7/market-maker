@@ -1,6 +1,6 @@
 import { MediaCardProps } from "../../../../components/ui/card/mediaCard/mediaCard";
-import { ImageType } from "./../../shared/image/image";
-import { Model } from "@/domain/shared/model/model";
+import { ImageType } from "../../shared/image/image";
+import { Model } from "@/app/shared/model/model";
 
 export class Product extends Model {
   static createProductFromJson(json: any): Product {

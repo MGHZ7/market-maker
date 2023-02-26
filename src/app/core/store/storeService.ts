@@ -1,6 +1,6 @@
 import { StoreRepository } from "../../infrastructure/repository/store/storeRepository";
-import { ICRUDData } from "@/domain/shared/service/dataTransfer";
-import { Data } from "@/domain/shared/data/data";
+import { ICRUDData } from "@/app/shared/service/dataTransfer";
+import { Data } from "@/app/shared/data/data";
 import { Store } from "./store";
 
 export interface ITaskService extends ICRUDData<Store, string> {}

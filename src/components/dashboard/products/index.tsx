@@ -1,4 +1,4 @@
-import { Product } from "@/domain/core/category/product/product";
+import { Product } from "@/app/core/category/product/product";
 import { AdminDashboardLayout } from "../layout";
 import { ProductList, ProductListProps } from "@/components/product/list/cardList";
 
