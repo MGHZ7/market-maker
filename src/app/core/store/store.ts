@@ -1,44 +1,80 @@
 import { Model } from "../../shared/model/model";
 
-export interface StoreProps {
-  id: string;
-  title: string;
-  owner: string;
+export interface BackendStoreProps {
+  storeId?: string;
+  name: string;
+  logo: string;
+  description: string;
+  dateCreated?: number;
 }
 
 export class Store extends Model<string> {
-  static createStore(title: string): Store {
-    return new Store("", title);
+  static createStore(name: string, logo: string, description: string): Store {
+    return new Store("", name, logo, description);
   }
 
-  static createStoreFromJson(json: StoreProps): Store {
-    return new Store(json.id, json.title);
+  static createStoreFromJson(json: BackendStoreProps): Store {
+    return new Store(
+      json.storeId,
+      json.name,
+      json.logo,
+      json.description,
+      json.dateCreated
+    );
   }
 
-  private _title: string;
-  private _createdAt: Date;
+  private _name: string;
+  private _logo: string;
+  private _description: string;
+  private _dateCreated: Date;
 
-  private constructor(id: string, title: string) {
-    super(id);
-    this._createdAt = new Date();
-    this._title = title.trim();
+  private constructor(
+    id?: string,
+    name: string,
+    logo: string,
+    description: string,
+    dateCreated?: number
+  ) {
+    super(id ?? "");
+    this._dateCreated = dateCreated ? new Date(dateCreated) : new Date();
+    this._name = name.trim();
+    // TODO change image static url
+    this._logo =
+      logo === "logo"
+        ? "https://www.shutterstock.com/image-vector/grocery-store-front-commercial-property-260nw-1728521551.jpg"
+        : logo;
+    this._description = description;
   }
 
-  get title(): string {
-    return this._title;
+  get name(): string {
+    return this._name;
   }
 
-  get createdAt(): Date {
-    return this._createdAt;
+  get logo(): string {
+    return this._logo;
+  }
+
+  get description(): string {
+    return this._description;
+  }
+
+  get dateCreated(): Date {
+    return this._dateCreated;
   }
 
   get humanReadableCreatedAt(): string {
-    return this._createdAt.toString();
+    return this._dateCreated.toString();
   }
 
-  public toJson(): StoreProps {
+  public toJson(): BackendStoreProps {
     const parentJson = super.toJson();
 
-    return { ...parentJson, title: this.title, createdAt: this.createdAt };
+    return {
+      storeId: this.id,
+      name: this.name,
+      logo: this.logo,
+      description: this.description,
+      dateCreated: this.dateCreated.getTime(),
+    };
   }
 }
