@@ -7,15 +7,15 @@ export const DRAWER_SECTIONS: DrawerSectionProps[] = [
     items: [
       {
         title: "Stores",
-        href: "/stores",
+        href: "/dashboard/stores",
       },
       {
         title: "Categories",
-        href: "/category",
+        href: "/dashboard/category",
       },
       {
         title: "Products",
-        href: "/products",
+        href: "/dashboard/products",
       },
     ],
   },

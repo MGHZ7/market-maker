@@ -4,7 +4,7 @@ import { FilterBarPropsWithSearch } from "@/components/ui/filterAndSearch/layout
 import { StoreCard } from "../card/storeCard";
 
 export interface StoresListProps {
-    stores: Store[];
+    stores?: Store[];
 }
 
 export const StoresList = ({ stores }: StoresListProps) => {
@@ -13,7 +13,7 @@ export const StoresList = ({ stores }: StoresListProps) => {
         <>
             <FilterBarPropsWithSearch className={`mb-4`} />
             <ItemCardList>
-                {stores.map((store) => (<StoreCard key={store.id} store={store} />))}
+                {stores?.map((store) => (<StoreCard key={store.id} store={store} />))}
             </ItemCardList>
         </>
     );

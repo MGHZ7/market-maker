@@ -3,10 +3,10 @@ import { AdminDashboardLayout } from "../../layout";
 import { Store } from "@/app/core/store/store";
 
 export interface StoreListProps {
-    stores: Store[];
+    stores?: Store[];
 }
 
-export const Products = ({ stores }: StoreListProps) => {
+export const StoreList = ({ stores }: StoreListProps) => {
 
     return (
         <AdminDashboardLayout>
