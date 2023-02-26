@@ -7,7 +7,7 @@ export interface FilterBarLayoutProps extends UiElementProps {
 export const FilterBarLayout = ({ children, className }: FilterBarLayoutProps) => {
 
     return (
-        <section className={`${className} bg-surface rounded p-2`}>
+        <section className={`${className} bg-surface rounded shadow p-4`}>
             {children}
         </section>
     );

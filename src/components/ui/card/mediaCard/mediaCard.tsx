@@ -9,11 +9,11 @@ export interface MediaCardProps extends UiElementProps {
     footer: JSX.Element;
 };
 
-export const MediaCard = ({ image, body, footer }: MediaCardProps) => {
+export const MediaCard = ({ image, body, footer, className }: MediaCardProps) => {
 
     return (
-        <Card>
-            <>
+        <Card className={`${className ?? ''}`}>
+            <article className={`space-y-4`}>
                 <article className={`aspect-[4/3]`}>
                     <Image
                         {...image}
@@ -22,13 +22,13 @@ export const MediaCard = ({ image, body, footer }: MediaCardProps) => {
                         height={image.height ?? IMAGE_OPTIONS.height}
                         className={`w-full object-cover aspect-[4/3] rounded`} />
                 </article>
-                <article className={`mt-2`} >
+                <article className={``} >
                     {body}
                 </article>
-                <article className={`mt-2`}>
+                <article className={``}>
                     {footer}
                 </article>
-            </>
+            </article>
         </Card>
     )
 };

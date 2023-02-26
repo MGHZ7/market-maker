@@ -13,7 +13,6 @@
     "@fortawesome/free-regular-svg-icons": "^6.3.0",
     "@fortawesome/free-solid-svg-icons": "^6.3.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
-    "@intoexpert/into-ui-library": "^0.1.20",
     "@next/font": "13.1.6",
     "@types/node": "18.14.0",
     "@types/react": "18.0.28",
@@ -25,6 +24,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-query": "^3.39.3",
+    "react-select": "^5.7.0",
     "recharts": "^2.4.3",
     "typescript": "4.9.5"
   },

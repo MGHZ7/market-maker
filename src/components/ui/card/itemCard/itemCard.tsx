@@ -1,3 +1,4 @@
+import { Button } from "../../button";
 import { ImageProps } from "../../image";
 import { MediaCard } from "../mediaCard/mediaCard";
 
@@ -15,9 +16,9 @@ export const ItemCard = ({ image, title, description }: ItemCardProps) => {
     </div>);
 
     const Footer = () => <div className={`flex justify-center`}>
-        <button className={`bg-secondary rounded hover:bg-primary py-1 px-3 text-surface`}>
+        <Button>
             View
-        </button>
+        </Button>
     </div>
 
     return (

@@ -1,6 +1,6 @@
 import { icon } from "@fortawesome/fontawesome-svg-core";
 import { MouseEvent } from "react";
-import { ButtonProps } from "../button";
+import { Button, ButtonProps } from "../button";
 
 export interface IconButtonProps extends ButtonProps {
     icon: JSX.Element;
@@ -9,10 +9,10 @@ export interface IconButtonProps extends ButtonProps {
 export const IconButton = (props: IconButtonProps) => {
 
     return (
-        <button
-            className={`btn bg-gray-100 text-red-300 rounded-full py-1 px-2 text-lg cursor-pointer shadow-sm ${props.className}`}
-            onClick={props.onClick}>
-            <i className={``}>{props.icon}</i>
-        </button>
+        <>
+            <Button {...props} className={`rounded-full w-8 h-8 flex justify-center items-center ${props.className ?? ''}`}>
+                <i className={`m-auto inline-flex items-center justify-center`}>{props.icon}</i>
+            </Button>
+        </>
     );
 }
