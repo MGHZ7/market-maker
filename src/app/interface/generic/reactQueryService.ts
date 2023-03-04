@@ -1,4 +1,3 @@
-import { Task } from "@/app/core/store/store";
 import { Model } from "@/app/shared/model/model";
 import { ICRUDData } from "../../shared/service/dataTransfer";
 import { QueryClient, UseMutationResult, UseQueryResult } from "react-query";
@@ -18,5 +17,5 @@ export interface IReactQueryService<T extends Model<ID>, ID>
   ) => UseMutationResult<void, unknown, T, unknown>;
   useUpdateQuery: (
     queryClient: QueryClient
-  ) => UseMutationResult<Data<T, ID>, unknown, Task, unknown>;
+  ) => UseMutationResult<Data<T, ID>, unknown, T, unknown>;
 }

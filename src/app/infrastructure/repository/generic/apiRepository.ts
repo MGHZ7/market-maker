@@ -1,9 +1,9 @@
 import { FilterAndPaginateType } from "../../../shared/model/filterAndPagination";
-import { get } from "../../services/api-service";
+import { get } from "../../services/apiService";
 import { Model } from "@/app/shared/model/model";
 import { Repository } from "./repository";
 import { Data } from "@/app/shared/data/data";
-import apiService from "../../services/api-service";
+import apiService from "../../services/apiService";
 
 export abstract class ApiRepository<T extends Model<ID>, ID> extends Repository<
   T,

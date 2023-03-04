@@ -5,11 +5,11 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { Task } from "@/app/core/store/store";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { useContext } from "react";
-import { TaskAppServiceContext } from "@/app/interface/store/store";
+import { StoreAppServiceContext } from "@/app/interface/store/store";
 
 export const TaskListItem = (props: { task: Task }) => {
     const queryClient = useQueryClient();
-    const taskAppService = useContext(TaskAppServiceContext);
+    const taskAppService = useContext(StoreAppServiceContext);
     const deleteQuery = taskAppService.useDeleteQuery(queryClient);
     const handleOnDelete = () => {
         deleteQuery.mutate(props.task);

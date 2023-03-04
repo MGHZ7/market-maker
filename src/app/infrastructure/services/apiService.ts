@@ -1,4 +1,5 @@
 import axios from "axios";
+import { environment } from "@/environment";
 
 const config = environment.api;
 
@@ -9,12 +10,13 @@ const generateHeader = (userHeader: any) => {
     Authorization: token,
     ACCEPT: "application/json",
     "CONTENT-TYPE": "application/json",
+    "Access-Control-Allow-Origin": "*",
     ...userHeader,
   };
 };
 
 const generatePath = (path: string = "") => {
-  return `${config.baseUrl}/${path}`;
+  return `${config.baseUrl}${path}`;
 };
 
 export const get = <TParams, TResponse>(
@@ -25,6 +27,7 @@ export const get = <TParams, TResponse>(
   return axios.get<TParams, TResponse>(generatePath(path), {
     headers: generateHeader(header),
     params: params,
+    withCredentials: false,
   });
 };
 

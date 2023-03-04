@@ -4,12 +4,13 @@ import { Autocomplete } from "@/components/ui/form/select/autocomplete/autocompl
 
 export interface FilterBarPropsWithSearchProps extends UiElementProps {
     initialValue?: string;
+    onAdd?: () => void;
 };
 
-export const FilterBarPropsWithSearch = (props: FilterBarPropsWithSearchProps) => {
+export const FilterBarPropsWithSearch = ({ initialValue, onAdd, className }: FilterBarPropsWithSearchProps) => {
 
     return (
-        <FilterBarWithAdd className={`${props.className ?? ''}`}>
+        <FilterBarWithAdd className={`${className ?? ''}`} onAdd={onAdd}>
             <Autocomplete />
         </FilterBarWithAdd>
     );

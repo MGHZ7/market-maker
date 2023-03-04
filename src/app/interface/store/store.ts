@@ -1,26 +1,22 @@
 import { IReactQueryService } from "../generic/reactQueryService";
 import { Store } from "@/app/core/store/store";
-import { TaskService } from "@/app/core/store/storeService";
+import { StoreService } from "@/app/core/store/storeService";
 import { Data } from "@/app/shared/data/data";
 import { createContext } from "react";
 import { QueryClient, useMutation, useQuery } from "react-query";
 
 export interface IStoreAppService extends IReactQueryService<Store, string> {
   readonly listKey: string;
-  readonly addKey: string;
 }
 
-export class TaskAppService implements IStoreAppService {
-  private taskService = new TaskService();
+export class StoreAppService implements IStoreAppService {
+  private storeSerive = new StoreService();
   listKey: string = "stores";
-  addKey: string = "addStore";
 
   state = {};
 
-  useQuery = () => useQuery(this.listKey, () => this.taskService.getAll());
-
   async getAll(): Promise<Data<Store[], string>> {
-    const data = await this.taskService.getAll();
+    const data = await this.storeSerive.getAll();
 
     return data;
   }
@@ -28,15 +24,15 @@ export class TaskAppService implements IStoreAppService {
     throw new Error("Method not implemented.");
   }
   async add(model: Store): Promise<Data<Store, string>> {
-    const data = await this.taskService.add(model);
+    const data = await this.storeSerive.add(model);
 
     return data;
   }
   async update(model: Store): Promise<Data<Store, string>> {
-    return await this.taskService.update(model);
+    return await this.storeSerive.update(model);
   }
   async delete(model: Store): Promise<void> {
-    await this.taskService.delete(model);
+    await this.storeSerive.delete(model);
   }
 
   useGetAllQuery = () => useQuery(this.listKey, this.getAll.bind(this));
@@ -64,7 +60,3 @@ export class TaskAppService implements IStoreAppService {
       },
     });
 }
-
-export const TaskAppServiceContext = createContext<IStoreAppService>(
-  new TaskAppService()
-);

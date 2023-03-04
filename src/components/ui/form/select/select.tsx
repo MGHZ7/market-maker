@@ -9,12 +9,11 @@ export interface SelectProps extends UiElementProps, StateManagerProps {
 export const Select = (props: SelectProps) => {
 
     return (
-        <div className={`w-96 ${props.className}`}>
+        <div className={`${props.className}`}>
             <ReactSelect
                 classNames={{
                     container: (state) =>
                         `w-full`
-
                     ,
                     control: (state) =>
                         `!rounded ${state.isFocused ? 'border-primary' : ''}`

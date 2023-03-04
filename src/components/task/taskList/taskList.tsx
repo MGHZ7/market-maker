@@ -6,7 +6,7 @@ import { TaskListItemProps } from "./taskListItem/taskListItemType";
 import { MouseEvent, useContext, useEffect, useState } from "react";
 import { ComponentBasicState } from "@/components/generic/componentBasicState";
 import { ListSkeleton } from "@/components/ui/list";
-import { TaskAppService, TaskAppServiceContext } from "@/app/interface/store/store";
+import { StoreAppService, StoreAppServiceContext } from "@/app/interface/store/store";
 import { CardActionsLayoutProps, CrudCard } from "@/components/ui/card/crudCard/crudCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
@@ -25,7 +25,7 @@ export const TaskList = (props: TaskListProps) => {
 
     const queryClient = useQueryClient();
 
-    const taskAppService = useContext(TaskAppServiceContext);
+    const taskAppService = useContext(StoreAppServiceContext);
     const tasksListQuery = taskAppService.useGetAllQuery();
     const addTaskQuery = taskAppService.useAddQuery(queryClient);
 

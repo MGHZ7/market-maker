@@ -3,10 +3,10 @@ import { ICRUDData } from "@/app/shared/service/dataTransfer";
 import { Data } from "@/app/shared/data/data";
 import { Store } from "./store";
 
-export interface ITaskService extends ICRUDData<Store, string> {}
+export interface IStoreService extends ICRUDData<Store, string> {}
 
-export class TaskService implements ITaskService {
-  private storeApiRepository = new StoreRepository("stores", "storeId");
+export class StoreService implements IStoreService {
+  private storeApiRepository = new StoreRepository();
 
   getAll(): Promise<Data<Store[], string>> {
     return this.storeApiRepository.getAll({});
