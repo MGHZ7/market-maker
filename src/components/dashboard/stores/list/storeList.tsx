@@ -14,11 +14,9 @@ export const StoreList = ({ stores }: StoreListProps) => {
     const getAllQuery = storeAppService.useGetAllQuery();
     return (
         <AdminDashboardLayout>
-            <StoreAppServiceProvider>
-                <>
-                    {getAllQuery.isFetched ? <StoriesList stores={getAllQuery.data?.data} /> : null}
-                </>
-            </StoreAppServiceProvider>
+            <>
+                {getAllQuery.isFetched ? <StoriesList stores={getAllQuery.data?.data} /> : null}
+            </>
         </AdminDashboardLayout>
     );
 }

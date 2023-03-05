@@ -3,7 +3,7 @@ import { Store } from "@/app/core/store/store";
 import { ApiRepository } from "../generic/apiRepository";
 
 const STORES_BASE_PATH =
-  "https://hgqtqdvv2m.execute-api.eu-west-1.amazonaws.com/prod/stores";
+  "https://a69r26yjzb.execute-api.eu-west-1.amazonaws.com/prod/stores";
 const STORE_ID_KEY = "/storeId";
 
 export class StoreRepository extends ApiRepository<Store, string> {

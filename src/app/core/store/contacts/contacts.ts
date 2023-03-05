@@ -1,4 +1,4 @@
-export interface BackendContactsType {
+export interface ContactsType {
   whatsappNumber: string;
   phoneNumber?: string;
   telephoneNumber?: string;
@@ -9,7 +9,7 @@ export class Contacts {
   private _telephoneNumber: string;
   private _whatsappNumber: string;
 
-  static CreateFromJson = (json: BackendContactsType): Contacts => {
+  static createFromJson = (json: ContactsType): Contacts => {
     return new Contacts(
       json.whatsappNumber,
       json.telephoneNumber,
@@ -37,7 +37,7 @@ export class Contacts {
     return this._telephoneNumber;
   }
 
-  public toJson = (): BackendContactsType => ({
+  public toJson = (): ContactsType => ({
     whatsappNumber: this.whatsappNumber,
     phoneNumber: this.phoneNumber,
     telephoneNumber: this.telephoneNumber,

@@ -7,6 +7,7 @@ import { StoreForm } from "../form";
 import { StoreFormProvider, useStoreForm } from "../form/storeFormContext";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 export interface StoresListProps {
     stores?: Store[];
@@ -14,27 +15,15 @@ export interface StoresListProps {
 
 export const StoresList = ({ stores }: StoresListProps) => {
 
-    const [state, setState] = useState<{ show: boolean }>({ show: false });
+    const router = useRouter();
 
-    const onModalClose = (): void => {
-        setState(prevState => ({ ...prevState, show: false }));
-    };
-
-    const onModalOpen = (): void => {
-        setState(prevState => ({ ...prevState, show: true }));
+    const openCreatePage = (): void => {
+        router.push("stores/create");
     };
 
     return (
         <>
-            <FilterBarPropsWithSearch className={`mb-4`} onAdd={onModalOpen} />
-            <Modal show={state.show} hasCloseButton={true} onClose={onModalClose} className={`p-4 min-w-max`}>
-                <div className={`space-y-4`}>
-                    <h1 className={`mr-10`}>Add a store</h1>
-                    <StoreFormProvider>
-                        <StoreForm />
-                    </StoreFormProvider>
-                </div>
-            </Modal>
+            <FilterBarPropsWithSearch className={`mb-4`} onAdd={openCreatePage} />
             <ItemCardList>
                 {stores?.map((store) => (<StoreCard key={store.id} store={store} />))}
             </ItemCardList>

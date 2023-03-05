@@ -79,10 +79,10 @@ interface InputFieldState {
  */
 export const InputField = forwardRef<HTMLInputElement, InputFieldProps>(({ value, ...props }, ref) => {
 
-    const [state, setState] = useState<InputFieldState>({ value: props.defaultValue });
+    const [state, setState] = useState<InputFieldState>({ value: props.defaultValue ?? value });
 
     useEffect(() => {
-        setState(prevState => ({ ...prevState, value: value }));
+        setState(prevState => ({ ...prevState, value: value ?? '' }));
     }, [value])
 
     const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -90,7 +90,6 @@ export const InputField = forwardRef<HTMLInputElement, InputFieldProps>(({ value
         setState(prevState => ({ prevState, value }));
         props.onChange?.(event);
     }
-
 
     switch (props.type) {
         case "radio":

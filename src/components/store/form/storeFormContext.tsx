@@ -1,19 +1,20 @@
-import { BackendStoreProps, Store } from "@/app/core/store/store";
+import { StoreType, Store } from "@/app/core/store/store";
 import { useFormWithDefaultSettings } from "@/hooks";
 import { ReactElement, createContext, useContext } from "react";
 import { UseFormReturn } from "react-hook-form";
 import { useStoreAppService } from "../storeContext";
 import { useQueryClient } from "react-query";
+import colors from "tailwindcss/colors"
 
 export interface StoreFormContextProps {
-    form?: UseFormReturn<BackendStoreProps>;
-    onSubmit: (values: BackendStoreProps) => Promise<void>;
+    form?: UseFormReturn<StoreType>;
+    onSubmit: (values: StoreType) => Promise<void>;
 };
 
 export const StoreFormContext = createContext<StoreFormContextProps>({ form: undefined, onSubmit: () => Promise.resolve() });
 
 export interface StoreFormProviderProps {
-    initialValue?: BackendStoreProps;
+    initialValue?: StoreType;
     children?: ReactElement;
 }
 
@@ -24,14 +25,20 @@ export const StoreFormProvider = ({ children, initialValue }: StoreFormProviderP
 
     const storeAddQuery = storeAppService.useAddQuery(queryClient);
 
-    const storeForm = useFormWithDefaultSettings<BackendStoreProps>({
-        defaultValues: initialValue
+    const storeForm = useFormWithDefaultSettings<StoreType>({
+        defaultValues: {
+            theme: {
+                primaryColor: colors.blue[500],
+                secondaryColor: colors.red[300],
+                backgroundColor: colors.blue[50],
+                cardColor: "#ffffff",
+            },
+            ...initialValue
+        }
     });
 
-    const onSubmit = async (values: BackendStoreProps) => {
-        debugger;
+    const onSubmit = async (values: StoreType) => {
         const response = storeAddQuery.mutateAsync(Store.createStoreFromJson(values));
-        console.log(response);
     };
 
     return (
