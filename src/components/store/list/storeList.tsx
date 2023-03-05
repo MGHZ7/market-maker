@@ -6,6 +6,7 @@ import { Modal } from "@/components/ui/modal";
 import { StoreForm } from "../form";
 import { StoreFormProvider, useStoreForm } from "../form/storeFormContext";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
 
 export interface StoresListProps {
     stores?: Store[];
@@ -13,11 +14,20 @@ export interface StoresListProps {
 
 export const StoresList = ({ stores }: StoresListProps) => {
 
+    const [state, setState] = useState<{ show: boolean }>({ show: false });
+
+    const onModalClose = (): void => {
+        setState(prevState => ({ ...prevState, show: false }));
+    };
+
+    const onModalOpen = (): void => {
+        setState(prevState => ({ ...prevState, show: true }));
+    };
 
     return (
         <>
-            <FilterBarPropsWithSearch className={`mb-4`} />
-            <Modal show={true} className={`p-4 min-w-max`}>
+            <FilterBarPropsWithSearch className={`mb-4`} onAdd={onModalOpen} />
+            <Modal show={state.show} hasCloseButton={true} onClose={onModalClose} className={`p-4 min-w-max`}>
                 <div className={`space-y-4`}>
                     <h1 className={`mr-10`}>Add a store</h1>
                     <StoreFormProvider>

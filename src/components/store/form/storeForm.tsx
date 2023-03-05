@@ -20,7 +20,7 @@ export const StoreForm = ({ className }: StoreFormProps) => {
         handleSubmit,
         formState: { errors } } = form || { formState: {} };
 
-    return (<form className={`${className ?? ''}`} onSubmit={handleSubmit?.(onSubmit)}>
+    return (<form className={`space-y-2 ${className ?? ''}`} onSubmit={handleSubmit?.(onSubmit)}>
         <InputField
             {...register?.('name', { required: true })}
             className={`w-full`}
@@ -34,7 +34,7 @@ export const StoreForm = ({ className }: StoreFormProps) => {
             errorMessage={useValidationErrorMessage(errors?.description?.type ?? '')}
         ></TextArea>
 
-        <div className={`flex justify-end`}>
+        <div className={`flex justify-end mt-5`}>
             <Button className={``}>
                 Save
             </Button>

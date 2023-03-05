@@ -60,8 +60,9 @@ export abstract class ApiRepository<T extends Model<ID>, ID> extends Repository<
   }
 
   async add(model: T): Promise<Data<T, ID>> {
-    return (await apiService.post<T, Data<T, ID>>(`${this._basePath}`, model))
-      .data;
+    return (
+      await apiService.post<T, Data<T, ID>>(`${this._basePath}`, model.toJson())
+    ).data;
   }
 
   async update(model: T): Promise<Data<T, ID>> {

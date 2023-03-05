@@ -3,7 +3,7 @@ import { environment } from "@/environment";
 
 const config = environment.api;
 
-let token = "";
+let token: string = "";
 
 const generateHeader = (userHeader: any) => {
   return {
